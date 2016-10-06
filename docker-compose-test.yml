@@ -1,0 +1,11 @@
+phpunit:
+  image: phpunit/phpunit
+  links:
+    - db
+  volumes:
+    - .:/app
+
+db:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: secret
