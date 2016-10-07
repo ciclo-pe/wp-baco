@@ -12,15 +12,25 @@ class WP_Plugin_Baco {
   private $_content_path = null;
   private $_db = null;
 
-  //
-  // Constructor
-  //
+  /**
+   * Constructor
+   *
+   * @param $db_host
+   * @param $db_user
+   * @param $db_pass
+   * @param $db_name
+   */
   public function __construct( $db_host, $db_user, $db_pass, $db_name ) {
 
     $this->_content_path = ABSPATH . 'wp-content';
     $this->_db = new WP_Plugin_Baco_Db( $db_host, $db_user, $db_pass, $db_name );
   }
 
+  /**
+   * Plugin activation hook
+   *
+   * @return void
+   */
   public static function activate() {
     if ( version_compare( PHP_VERSION, '5.4.0' ) < 0 ) {
       deactivate_plugins( basename( __FILE__ ) );
@@ -28,17 +38,34 @@ class WP_Plugin_Baco {
     }
   }
 
+  /**
+   * Plugin deactivation hook
+   *
+   * @return void
+   */
   public static function deactivate() {
     //...
   }
 
-  public function dump() {
-    return $this->_db->dump();
+  /**
+   * Dump MySQL database to SQL script.
+   *
+   * This method simply delegates to WP_Plugin_Baco_Db::dump().
+   *
+   * @param $tables string|array List of tables to include in the dump.
+   *
+   * @throws Exception if can not connect.
+   * @return string The actual SQL dump.
+   */
+  public function dump( $tables = '*' ) {
+    return $this->_db->dump( $tables );
   }
 
-  //
-  // Create snapshot including both files and sql dump.
-  //
+  /**
+   * Create snapshot including both files and sql dump.
+   *
+   * @return string The archive path.
+   */
   public function snapshot() {
     $fname = tempnam( sys_get_temp_dir(), $this->_prefix ) . '.tar';
     $tar = new PharData( $fname );
@@ -69,9 +96,12 @@ class WP_Plugin_Baco {
     return $fname . '.gz';
   }
 
-  //
-  // Restore files and database from a given archived snapshot.
-  //
+  /**
+   * Restore files and database from a given archived snapshot.
+   *
+   * @param $snapshot
+   * @param $siteurl
+   */
   public function restore( $snapshot, $siteurl ) {
     // 1. Create unique temporary dir where to extract snapshot and do work.
     $tmpdir = WP_Plugin_Baco_Fs::tmpdir();
@@ -89,16 +119,21 @@ class WP_Plugin_Baco {
     return $this->restore_files( $tmpdir );
   }
 
-  //
-  // Restore database from SQL dump file.
-  //
+  /**
+   * Restore database from SQL dump file.
+   *
+   * @param $dumpfile
+   * @param $siteurl
+   */
   public function restore_db( $dumpfile, $siteurl ) {
     return $this->_db->restore( $dumpfile, $siteurl );
   }
 
-  //
-  // Restore `wp-content` files from given path.
-  //
+  /**
+   * Restore `wp-content` files from given path.
+   *
+   * @param $source
+   */
   public function restore_files( $source ) {
     $path = $this->_content_path;
     $name = array_shift( explode( DIRECTORY_SEPARATOR, plugin_basename( __FILE__ ) ) );
