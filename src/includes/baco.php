@@ -8,20 +8,19 @@ require 'baco-fs.php';
 
 class WP_Plugin_Baco {
 
-  private $_prefix = 'baco';
+  private $_name = 'wp-baco';
   private $_content_path = null;
   private $_db = null;
 
   /**
    * Constructor
    *
-   * @param $db_host
-   * @param $db_user
-   * @param $db_pass
-   * @param $db_name
+   * @param string $db_host
+   * @param string $db_user
+   * @param string $db_pass
+   * @param string $db_name
    */
   public function __construct( $db_host, $db_user, $db_pass, $db_name ) {
-
     $this->_content_path = ABSPATH . 'wp-content';
     $this->_db = new WP_Plugin_Baco_Db( $db_host, $db_user, $db_pass, $db_name );
   }
@@ -52,7 +51,7 @@ class WP_Plugin_Baco {
    *
    * This method simply delegates to WP_Plugin_Baco_Db::dump().
    *
-   * @param $tables string|array List of tables to include in the dump.
+   * @param string|array $tables List of tables to include in the dump.
    *
    * @throws Exception if can not connect.
    * @return string The actual SQL dump.
@@ -64,15 +63,25 @@ class WP_Plugin_Baco {
   /**
    * Create snapshot including both files and sql dump.
    *
+   * @param mixed[] $options Snapshot options can contain the following keys:
+   *                         * `exclude`: array of file path patterns to exclude
+   *
+   * @throws Exception if options.exlude is passed and is not an array.
    * @return string The archive path.
    */
-  public function snapshot() {
-    $fname = tempnam( sys_get_temp_dir(), $this->_prefix ) . '.tar';
-    $tar = new PharData( $fname );
+  public function snapshot( array $options=array() ) {
+    $exclude = array_key_exists( 'exclude', $options ) ? $options['exclude'] : array();
+
+    if ( ! is_array( $exclude ) ) {
+      throw new Exception( 'WP_Plugin_Baco:snapshot(): options.exclude must be an array.' );
+    }
+
+    $exclude[] = 'plugins/' . $this->_name;
+
     $path = $this->_content_path;
     $dir = new \RecursiveDirectoryIterator( $path, \FilesystemIterator::FOLLOW_SYMLINKS );
 
-    $filter = new \RecursiveCallbackFilterIterator($dir, function ( $current ) use ( $path ) {
+    $filter = new \RecursiveCallbackFilterIterator($dir, function ( $current ) use ( $path, $exclude ) {
       // Skip hidden files and directories.
       if ( $current->getFilename()[0] === '.' ) {
         return false;
@@ -80,15 +89,20 @@ class WP_Plugin_Baco {
 
       $rel = substr( $current->getPathname(), strlen( $path ) + 1 );
 
-      if ( preg_match( '/^plugins\/baco\//', $rel ) > 0 ) {
-        return false;
+      foreach ( $exclude as $pattern ) {
+        if ( preg_match( "|" . '^' . preg_quote( $pattern ) . "|", $rel ) ) {
+          return false;
+        }
       }
 
+      //echo "\n" . $rel;
       return true;
     });
 
     $iterator = new \RecursiveIteratorIterator( $filter );
 
+    $fname = tempnam( sys_get_temp_dir(), $this->_name ) . '.tar';
+    $tar = new PharData( $fname );
     $tar->buildFromIterator( $iterator, $path );
     $tar->addFromString( 'dump.sql', $this->_db->dump() );
     $bz2 = $tar->compress(Phar::GZ);
@@ -99,8 +113,8 @@ class WP_Plugin_Baco {
   /**
    * Restore files and database from a given archived snapshot.
    *
-   * @param $snapshot
-   * @param $siteurl
+   * @param string $snapshot
+   * @param string $siteurl
    */
   public function restore( $snapshot, $siteurl ) {
     // 1. Create unique temporary dir where to extract snapshot and do work.
@@ -122,8 +136,8 @@ class WP_Plugin_Baco {
   /**
    * Restore database from SQL dump file.
    *
-   * @param $dumpfile
-   * @param $siteurl
+   * @param string $dumpfile
+   * @param string $siteurl
    */
   public function restore_db( $dumpfile, $siteurl ) {
     return $this->_db->restore( $dumpfile, $siteurl );
@@ -132,20 +146,19 @@ class WP_Plugin_Baco {
   /**
    * Restore `wp-content` files from given path.
    *
-   * @param $source
+   * @param string $source
    */
   public function restore_files( $source ) {
     $path = $this->_content_path;
-    $name = array_shift( explode( DIRECTORY_SEPARATOR, plugin_basename( __FILE__ ) ) );
-    $exclude = array( '/^plugins\/' . $name . '/' );
+    $exclude = array( '/^plugins\/' . $this->_name . '/' );
     $rollback_dir = WP_Plugin_Baco_Fs::tmpdir();
 
-    // 1. Copy all from path to rollback excluding plugins/baco
+    // 1. Copy all from path to rollback excluding plugins/wp-baco
     if ( ! WP_Plugin_Baco_Fs::cp( $path, $rollback_dir, $exclude ) ) {
       return false;
     }
 
-    // 2. Delete all from path excluding plugins/baco
+    // 2. Delete all from path excluding plugins/wp-baco
     if ( ! WP_Plugin_Baco_Fs::rimraf( $path, $exclude ) ) {
       return false;
     }

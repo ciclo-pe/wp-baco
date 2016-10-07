@@ -12,8 +12,8 @@ class WP_Plugin_Baco_Admin {
     add_action( 'admin_menu', array( $this, 'add_menu' ) );
     add_action( 'admin_init', array( $this, 'admin_init' ) );
     add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-    add_action( 'admin_action_baco_create_download', array( $this, 'create_download' ) );
-    add_action( 'admin_action_baco_restore_upload', array( $this, 'restore_upload' ) );
+    add_action( 'admin_action_baco_create', array( $this, 'create' ) );
+    add_action( 'admin_action_baco_restore', array( $this, 'restore' ) );
   }
 
   public function add_menu() {
@@ -27,10 +27,37 @@ class WP_Plugin_Baco_Admin {
   }
 
   public function admin_init() {
-    register_setting('baco-group', 'baco_setting_aws_key');
-    register_setting('baco-group', 'baco_setting_aws_secret');
-    register_setting('baco-group', 'baco_setting_aws_bucket');
-    register_setting('baco-group', 'baco_setting_aws_region');
+    register_setting('wp-baco', 'baco_exclude');
+
+    add_settings_section(
+      'baco_settings_section_default',       // id
+      'Snapshot Options',                       // title
+      null, //array( $this, 'settings_section_cb' ), // callback
+      'baco-admin'                           // page
+    );
+
+    add_settings_field(
+      'baco_settings_field_exclude',               // id
+      'Exclude',                                   // title
+      array( $this, 'settings_field_exclude_cb' ), // callback
+      'baco-admin',                                // page
+      'baco_settings_section_default',             // section
+      array(                                       // args
+        //'label_for' => '',
+        //'class' => ''
+      )
+    );
+  }
+
+  //public function settings_section_cb() {
+  //  echo '<p>Baco Section....</p>';
+  //}
+
+  public function settings_field_exclude_cb() {
+    $setting = get_option( 'baco_exclude' );
+    ?>
+    <textarea rows="5" name="baco_exclude" id="baco_exclude"><?= isset( $setting ) ? esc_attr( $setting ) : ''; ?></textarea>
+    <?php
   }
 
   public function enqueue_scripts( $hook ) {
@@ -53,37 +80,45 @@ class WP_Plugin_Baco_Admin {
         <a href="?page=baco-admin&tab=snapshots"
           class="nav-tab <?php echo $active_tab == 'snapshots' ? 'nav-tab-active' : ''; ?>"
         ><span class="dashicons dashicons-backup"></span> Snapshots</a>
-        <!--a href="?page=baco-admin&tab=options"
+        <a href="?page=baco-admin&tab=options"
           class="nav-tab <?php echo $active_tab == 'options' ? 'nav-tab-active' : ''; ?>"
         ><span class="dashicons dashicons-admin-generic"></span>Options</a>
-        <a href="?page=baco-admin&tab=cron"
-          class="nav-tab <?php echo $active_tab == 'cron' ? 'nav-tab-active' : ''; ?>"
-        ><span class="dashicons dashicons-hammer"></span>Cron</a-->
+        <a href="?page=baco-admin&tab=doctor"
+          class="nav-tab <?php echo $active_tab == 'doctor' ? 'nav-tab-active' : ''; ?>"
+        ><span class="dashicons dashicons-sos"></span>Doctor</a>
       </h2>
       <?php
       if ( $active_tab == 'snapshots' ) {
-        include 'templates/baco-backup-list.php';
+        include 'templates/baco-snapshots.php';
       }
       else if ( $active_tab == 'options' ) {
         include 'templates/baco-options.php';
       }
       else {
-        include 'templates/baco-cron.php';
+        include 'templates/baco-doctor.php';
       }
       ?>
     </div>
     <?php
   }
 
-  public function create_download() {
-    $fname = $this->_plugin->snapshot();
+  public function create() {
+    $options = array();
+
+    $exclude = trim( get_option( 'baco_exclude', '' ) );
+
+    if ( $exclude ) {
+      $options['exclude'] = explode( "\n", $exclude );
+    }
+
+    $fname = $this->_plugin->snapshot( $options );
 
     header( 'Content-type: application/x-gzip' );
     header( 'Content-Disposition: attachment; filename="snapshot-' . time() . '.tar.gz"' );
     readfile( $fname );
   }
 
-  public function restore_upload() {
+  public function restore() {
     $archive = $_FILES['archive'];
 
     if ( $archive['error'] ) {

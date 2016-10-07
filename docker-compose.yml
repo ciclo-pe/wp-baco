@@ -5,7 +5,7 @@ wp:
   links:
     - db:mysql
   volumes:
-    - ./src:/var/www/html/wp-content/plugins/baco
+    - ./src:/var/www/html/wp-content/plugins/wp-baco
     - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
   environment:
     BACO_AWS_KEY: ${AWSACCESSKEYID}

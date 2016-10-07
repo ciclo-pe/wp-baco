@@ -1,0 +1,741 @@
+# Translation of Stable (latest release) in English (UK)
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-09-15 21:17:45+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: vendor/yoast/license-manager/class-theme-license-manager.php:34
+#: vendor/yoast/license-manager/samples/sample-plugin.php:53
+msgid "%s License"
+msgstr "%s Licence"
+
+#: vendor/yoast/license-manager/class-update-manager.php:83
+msgid "%s failed to check for updates because of the following error: <em>%s</em>"
+msgstr "%s failed to check for updates because of the following error: <em>%s</em>"
+
+#: vendor/yoast/license-manager/class-plugin-license-manager.php:75
+msgid "%s is network activated, please contact your site administrator to manage the license."
+msgstr "%s is network activated. Please contact your site administrator to manage the licence."
+
+#: vendor/yoast/license-manager/class-plugin-license-manager.php:73
+msgid "%s is network activated, you can manage your license in the <a href=\"%s\">network admin license page</a>."
+msgstr "%s is network activated. You can manage your licence in the <a href=\"%s\">network admin licence page</a>."
+
+#: vendor/yoast/license-manager/class-license-manager.php:430
+msgid "%s: License Settings"
+msgstr "%s: Licence Settings"
+
+#: vendor/yoast/license-manager/views/form.php:84
+msgid "%sRenew your license now%s."
+msgstr "%sRenew your licence now%s."
+
+#: vendor/yoast/license-manager/views/form.php:46
+msgid "(deactivate your license so you can activate it on another WordPress site)"
+msgstr "(deactivate your licence so you can activate it on another WordPress site)"
+
+#: vendor/yoast/license-manager/class-license-manager.php:190
+msgid "<a href=\"%s\">Did you know you can upgrade your license?</a>"
+msgstr "<a href=\"%s\">Did you know you can upgrade your licence?</a>"
+
+#: vendor/yoast/license-manager/class-license-manager.php:194
+msgid "<a href=\"%s\">Your license is expiring in %d days, would you like to extend it?</a>"
+msgstr "<a href=\"%s\">Your licence is expiring in %d days. Would you like to extend it?</a>"
+
+#: vendor/yoast/license-manager/class-license-manager.php:138
+msgid "<b>Warning!</b> You're blocking external requests which means you won't be able to get %s updates. Please add %s to %s."
+msgstr "<b>Warning!</b> You're blocking external requests which means you won't be able to get %s updates. Please add %s to %s."
+
+#: vendor/yoast/license-manager/class-theme-update-manager.php:101
+msgid "<strong>%s version %s</strong> is available. <a href=\"%s\" class=\"thickbox\" title=\"%s\">Check out what's new</a> or <a href=\"%s\" %s>update now</a>."
+msgstr "<strong>%s version %s</strong> is available. <a href=\"%s\" class=\"thickbox\" title=\"%s\">Check out what's new</a> or <a href=\"%s\" %s>update now</a>."
+
+#: admin/pages/settings.php:169
+msgid "<strong>Note</strong> the debugging is only loaded for administrators."
+msgstr "<strong>Note</strong> the debugging is only loaded for administrators."
+
+#: frontend/abstract-class-tracking.php:482
+msgid "@Webmaster, normally you will find the Google Analytics tracking code here, but the Debug Mode is enabled. To change this, navigate to Analytics -> Settings -> (Tab) Debug Mode and disable Debug Mode to enable tracking of your site."
+msgstr "@Webmaster, normally you will find the Google Analytics tracking code here, but the Debug Mode is enabled. To change this, navigate to Analytics -> Settings -> (Tab) Debug Mode and disable Debug Mode to enable tracking of your site."
+
+#: frontend/abstract-class-tracking.php:461
+msgid "@Webmaster, normally you will find the Google Analytics tracking code here, but you are in the disabled user groups. To change this, navigate to Analytics -> Settings (Ignore usergroups)"
+msgstr "@Webmaster, normally you will find the Google Analytics tracking code here, but you are in the disabled user groups. To change this, navigate to Analytics -> Settings (Ignore usergroups)"
+
+#: admin/pages/settings.php:124
+msgid "Add %1$sEnhanced Link Attribution%2$s to your tracking code."
+msgstr "Add %1$sEnhanced Link Attribution%2$s to your tracking code."
+
+#: admin/pages/settings.php:145
+msgid "Add <code>_setAllowLinker</code>"
+msgstr "Add <code>_setAllowLinker</code>"
+
+#: admin/pages/settings.php:134
+msgid "Advanced settings"
+msgstr "Advanced settings"
+
+#: admin/pages/settings.php:144
+msgid "Allow anchor"
+msgstr "Allow anchor"
+
+#: vendor/yoast/i18n-module/i18n-module.php:170
+msgid "As you can see, there is a translation of this plugin in %1$s. This translation is currently %3$d%% complete. We need your help to make it complete and to fix any errors. Please register at %4$s to help complete the translation to %1$s!"
+msgstr "As you can see, there is a translation of this plugin in %1$s. This translation is currently %3$d%% complete. We need your help to make it complete and to fix any errors. Please register at %4$s to help complete the translation to %1$s!"
+
+#: admin/pages/settings.php:118
+msgid "Check this setting to add the Demographics and Remarketing features to your Google Analytics tracking code. We've written an article in our %1$sknowledge base%2$s about Demographics and Interest reports. For more information about Remarketing, we refer you to %3$sGoogle's documentation%2$s."
+msgstr "Check this setting to add the Demographics and Remarketing features to your Google Analytics tracking code. We've written an article in our %1$sknowledge base%2$s about Demographics and Interest reports. For more information about Remarketing, we refer you to %3$sGoogle's documentation%2$s."
+
+#: admin/pages/settings.php:147
+msgid "Custom code"
+msgstr "Custom code"
+
+#: admin/pages/settings.php:158
+msgid "Custom dimensions"
+msgstr "Custom dimensions"
+
+#: vendor/yoast/license-manager/views/form.php:45
+msgid "Deactivate License"
+msgstr "Deactivate Licence"
+
+#: admin/pages/settings.php:165
+msgid "Debug"
+msgstr "Debug"
+
+#: admin/pages/settings.php:103
+msgid "Disable analytics dashboard"
+msgstr "Disable analytics dashboard"
+
+#: admin/pages/settings.php:143
+msgid "Do not use this feature if you use FeedBurner, as FeedBurner can do this automatically and better than this plugin can. Check <a href=\"https://support.google.com/feedburner/answer/165769?hl=en&amp;ref_topic=13075\" target=\"_blank\">this help page</a> for info on how to enable this feature in FeedBurner."
+msgstr "Do not use this feature if you use FeedBurner, as FeedBurner can do this automatically and better than this plugin can. Check <a href=\"https://support.google.com/feedburner/answer/165769?hl=en&amp;ref_topic=13075\" target=\"_blank\">this help page</a> for info on how to enable this feature in FeedBurner."
+
+#: admin/pages/settings.php:113
+msgid "Enable Demographics and Interests Reports for Remarketing and Advertising"
+msgstr "Enable Demographics and Interests Reports for Remarketing and Advertising"
+
+#: admin/pages/settings.php:110
+msgid "Enable Universal tracking"
+msgstr "Enable Universal tracking"
+
+#: admin/pages/settings.php:171
+msgid "Enable debug mode"
+msgstr "Enable debug mode"
+
+#: admin/pages/settings.php:124
+msgid "Enhanced Link Attribution"
+msgstr "Enhanced Link Attribution"
+
+#: admin/pages/settings.php:136
+msgid "Extensions of files to track as downloads"
+msgstr "Extensions of files to track as downloads"
+
+#: vendor/yoast/license-manager/class-license-manager.php:209
+msgid "Failed to activate your license, your license key seems to be invalid."
+msgstr "Failed to activate your licence as your licence key seems to be invalid."
+
+#: vendor/yoast/license-manager/class-license-manager.php:235
+msgid "Failed to deactivate your %s license."
+msgstr "Failed to deactivate your %s licence."
+
+#: admin/pages/settings.php:110
+msgid "First enable Universal tracking in your Google Analytics account. Please read %1$sthis guide%2$s to learn how to do that."
+msgstr "First enable Universal tracking in your Google Analytics account. Please read %1$sthis guide%2$s to learn how to do that."
+
+#: admin/pages/settings.php:168
+msgid "If you want to confirm that tracking on your blog is working as it should, enable this option and check the console of your browser. Be absolutely sure to disable debugging afterwards, as it is slower than normal tracking."
+msgstr "If you want to confirm that tracking on your blog is working as it should be, enable this option and check the console of your browser. Be absolutely sure to disable debugging afterwards, as it is slower than normal tracking."
+
+#: admin/pages/settings.php:140
+msgid "If you want to track all internal links that begin with %1$s, enter %1$s in the box above. If you have multiple prefixes you can separate them with comma's: %2$s"
+msgstr "If you want to track all internal links that begin with %1$s, enter %1$s in the box above. If you have multiple prefixes you can separate them with commas: %2$s"
+
+#: admin/pages/settings.php:102
+msgid "Ignore users"
+msgstr "Ignore users"
+
+#: admin/pages/settings.php:141
+msgid "Label for those links"
+msgstr "Label for those links"
+
+#: vendor/yoast/license-manager/views/form.php:60
+msgid "License Key"
+msgstr "Licence Key"
+
+#: vendor/yoast/license-manager/views/form.php:31
+msgid "License status"
+msgstr "Licence status"
+
+#: frontend/abstract-class-tracking.php:464
+msgid "Normally you will find the Google Analytics tracking code here, but the webmaster disabled your user group."
+msgstr "Normally you will find the Google Analytics tracking code here, but the webmaster disabled your user group."
+
+#: frontend/abstract-class-tracking.php:485
+msgid "Normally you will find the Google Analytics tracking code here, but the webmaster has enabled the Debug Mode."
+msgstr "Normally you will find the Google Analytics tracking code here, but the webmaster has enabled the Debug Mode."
+
+#: admin/pages/settings.php:147
+msgid "Not for the average user: this allows you to add a line of code, to be added before the %1$s call."
+msgstr "Not for the average user: this allows you to add a line of code, to be added before the %1$s call."
+
+#: admin/pages/settings.php:135
+msgid "Not recommended, as this would skew your statistics, but it does make it possible to track downloads as goals."
+msgstr "Not recommended, as this would skew your statistics, but it does make it possible to track downloads as goals."
+
+#: admin/pages/settings.php:115
+msgid "Note that usage of this function is affected by privacy and cookie laws around the world. Be sure to follow the laws that affect your target audience."
+msgstr "Note that usage of this function is affected by privacy and cookie laws around the world. Be sure to follow the laws that affect your target audience."
+
+#: vendor/yoast/license-manager/views/form.php:62
+msgid "Paste your %s license key here.."
+msgstr "Paste your %s licence key here.."
+
+#: vendor/yoast/license-manager/views/form.php:52
+msgid "Please enter a license key in the field below first."
+msgstr "Please enter a licence key in the field below first."
+
+#: vendor/yoast/i18n-module/i18n-module.php:199
+msgid "Register now &raquo;"
+msgstr "Register now &raquo;"
+
+#: admin/views/content-footer.php:14
+msgid "Remove these ads?"
+msgstr "Remove these ads?"
+
+#: vendor/yoast/license-manager/class-license-manager.php:271
+msgid "Request error: \"%s\" (%scommon license notices%s)"
+msgstr "Request error: \"%s\" (%scommon licence notices%s)"
+
+#: admin/pages/settings.php:185
+msgid "Select the users to ignore"
+msgstr "Select the users to ignore"
+
+#: admin/pages/settings.php:140
+msgid "Set path for internal links to track as outbound links"
+msgstr "Set path for internal links to track as outbound links"
+
+#: admin/pages/settings.php:138
+msgid "Subdomain tracking"
+msgstr "Subdomain tracking"
+
+#: admin/pages/settings.php:143
+msgid "Tag links in RSS feed with campaign variables"
+msgstr "Tag links in RSS feed with campaign variables"
+
+#. Author of the plugin/theme
+msgid "Team Yoast"
+msgstr "Team Yoast"
+
+#: googleanalytics.php:92
+msgid "The (standard) PHP filter extension seem to be unavailable. Please ask your web host to enable it."
+msgstr "The (standard) PHP filter extension seem to be unavailable. Please ask your web host to enable it."
+
+#: googleanalytics.php:79
+msgid "The Standard PHP Library (SPL) extension seem to be unavailable. Please ask your web host to enable it."
+msgstr "The Standard PHP Library (SPL) extension seem to be unavailable. Please ask your web host to enable it."
+
+#: vendor/yoast/license-manager/class-theme-license-manager.php:34
+msgid "Theme License"
+msgstr "Theme Licence"
+
+#: admin/pages/settings.php:145
+msgid "This adds a %1$s call to your tracking code, allowing you to use %2$s and related functions."
+msgstr "This adds a %1$s call to your tracking code, allowing you to use %2$s and related functions."
+
+#: admin/pages/settings.php:144
+msgid "This adds a %1$s call to your tracking code, and makes RSS link tagging use a %2$s as well."
+msgstr "This adds a %1$s call to your tracking code, and makes RSS link tagging use a %2$s as well."
+
+#: admin/pages/settings.php:138
+msgid "This allows you to set the domain that's set by %1$s for tracking subdomains.<br/>If empty, this will not be set."
+msgstr "This allows you to set the domain that's set by %1$s for tracking subdomains.<br/>If empty, this will not be set."
+
+#. Description of the plugin/theme
+msgid "This plugin makes it simple to add Google Analytics to your WordPress site, adding lots of features, e.g. error page, search result and automatic outgoing links and download tracking."
+msgstr "This plugin makes it simple to add Google Analytics to your WordPress site, adding lots of features, e.g. error page, search result and automatic outgoing links and download tracking."
+
+#: vendor/yoast/license-manager/class-update-manager.php:153
+msgid "This site has not been activated properly on yoast.com and thus cannot check for future updates. Please activate your site with a valid license key."
+msgstr "This site has not been activated properly on yoast.com and so cannot check for future updates. Please activate your site with a valid licence key."
+
+#: frontend/abstract-class-tracking.php:458
+#: frontend/abstract-class-tracking.php:479
+msgid "This site uses the %1$s plugin version %2$s"
+msgstr "This site uses the %1$s plugin version %2$s"
+
+#: admin/pages/settings.php:103
+msgid "This will completely disable the dashboard and stop the plugin from fetching the latest analytics data."
+msgstr "This will completely disable the dashboard and stop the plugin from fetching the latest analytics data."
+
+#: vendor/yoast/license-manager/views/form.php:41
+msgid "Toggle license status"
+msgstr "Toggle licence status"
+
+#: admin/pages/settings.php:135
+msgid "Track downloads as"
+msgstr "Track downloads as"
+
+#: admin/pages/settings.php:137
+msgid "Track full URL of outbound clicks or just the domain"
+msgstr "Track full URL of outbound clicks or just the domain"
+
+#: vendor/yoast/i18n-module/i18n-module.php:194
+msgid "Translation of %s"
+msgstr "Translation of %s"
+
+#: admin/pages/settings.php:109
+msgid "Universal settings"
+msgstr "Universal settings"
+
+#: vendor/yoast/license-manager/class-theme-update-manager.php:96
+msgid "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update."
+msgstr "Updating this theme will lose any customisations you have made. 'Cancel' to stop, 'OK' to update."
+
+#: admin/views/content-footer.php:15
+msgid "Upgrade to Google Analytics By Yoast Premium »"
+msgstr "Upgrade to Google Analytics By Yoast Premium »"
+
+#: admin/pages/settings.php:102
+msgid "Users of the role you select will be ignored, so if you select Editor, all Editors will be ignored."
+msgstr "Users of the role you select will be ignored, so if you select Editor, all Editors will be ignored."
+
+#: vendor/yoast/license-manager/views/form.php:15
+msgid "We couldn't create a connection to our API to verify your license key(s). Please ask your hosting company to allow outgoing connections from your server to %s."
+msgstr "We couldn't create a connection to our API to verify your licence key(s). Please ask your hosting company to allow outgoing connections from your server to %s."
+
+#: vendor/yoast/license-manager/views/form.php:64
+msgid "You defined your license key using the %s PHP constant."
+msgstr "You defined your licence key using the %s PHP constant."
+
+#: vendor/yoast/license-manager/class-license-manager.php:183
+msgid "You have an unlimited license. "
+msgstr "You have an unlimited licence. "
+
+#: vendor/yoast/license-manager/class-license-manager.php:185
+msgid "You have used %d/%d activations. "
+msgstr "You have used %d/%d activations. "
+
+#: vendor/yoast/i18n-module/i18n-module.php:172
+msgid "You're using WordPress in %1$s. While %2$s has been translated to %1$s for %3$d%%, it's not been shipped with the plugin yet. You can help! Register at %4$s to help complete the translation to %1$s!"
+msgstr "You're using WordPress in %1$s. While %2$s has been translated to %1$s for %3$d%%, this has not been shipped with the plugin as yet. You can help! Register at %4$s to help complete the translation to %1$s!"
+
+#: vendor/yoast/i18n-module/i18n-module.php:174
+msgid "You're using WordPress in a language we don't support yet. We'd love for %2$s to be translated in that language too, but unfortunately, it isn't right now. You can change that! Register at %4$s to help translate it!"
+msgstr "You're using WordPress in a language we don't support as yet. We'd love for %2$s to be translated into that language too, but unfortunately, it isn't right now. You can change that! Register at %4$s to help translate it!"
+
+#: vendor/yoast/license-manager/class-license-manager.php:203
+msgid "You've reached your activation limit. You must <a href=\"%s\">upgrade your license</a> to use it on this site."
+msgstr "You've reached your activation limit. You must <a href=\"%s\">upgrade your licence</a> to use it on this site."
+
+#: vendor/yoast/license-manager/class-license-manager.php:179
+msgid "Your %s license has been activated. "
+msgstr "Your %s licence has been activated. "
+
+#: vendor/yoast/license-manager/class-license-manager.php:233
+msgid "Your %s license has been deactivated."
+msgstr "Your %s licence has been deactivated."
+
+#: vendor/yoast/license-manager/views/form.php:81
+msgid "Your %s license will expire on %s."
+msgstr "Your %s licence will expire on %s."
+
+#: vendor/yoast/license-manager/class-license-manager.php:206
+msgid "Your license has expired. You must <a href=\"%s\">extend your license</a> in order to use it again."
+msgstr "Your licence has expired. You must <a href=\"%s\">extend your licence</a> in order to use it again."
+
+#: vendor/yoast/license-manager/views/form.php:19
+msgid "Your server has an outdated version of the PHP module cURL (Version: %s). Please ask your hosting company to update this to a recent version of cURL. You can read more about that in our %sKnowledge base%s."
+msgstr "Your server has an outdated version of the PHP module cURL (Version: %s). Please ask your hosting company to update this to a recent version of cURL. You can read more about that in our %sKnowledge base%s."
+
+#. Author URI of the plugin/theme
+msgid "https://yoast.com/"
+msgstr "https://yoast.com/"
+
+#. Plugin URI of the plugin/theme
+msgid "https://yoast.com/wordpress/plugins/google-analytics/#utm_source=wordpress&utm_medium=plugin&utm_campaign=wpgaplugin&utm_content=v504"
+msgstr "https://yoast.com/wordpress/plugins/google-analytics/#utm_source=wordpress&utm_medium=plugin&utm_campaign=wpgaplugin&utm_content=v504"
+
+#: admin/dashboards/class-admin-dashboards.php:135
+msgid ": activate to sort column ascending"
+msgstr ": activate to sort column ascending"
+
+#: admin/dashboards/class-admin-dashboards.php:136
+msgid ": activate to sort column descending"
+msgstr ": activate to sort column descending"
+
+#: admin/dashboards/class-admin-dashboards.php:192
+msgid "A session is a group of interactions that take place on your website within a given time frame. For example a single session can contain multiple screen or page views, events, social interactions, and ecommerce transactions. <a href=\"http://yoa.st/gasessions\" target=\"_blank\">[Learn more]</a>"
+msgstr "A session is a group of interactions that take place on your website within a given timeframe. For example a single session can contain multiple screen or page views, events, social interactions, and ecommerce transactions. <a href=\"http://yoa.st/gasessions\" target=\"_blank\">[Learn more]</a>"
+
+#: admin/pages/extensions.php:39 vendor/yoast/license-manager/views/form.php:50
+msgid "Activate License"
+msgstr "Activate Licence"
+
+#: admin/pages/settings.php:19
+msgid "Advanced"
+msgstr "Advanced"
+
+#: admin/pages/settings.php:100
+msgid "Allow tracking of anonymous data"
+msgstr "Allow tracking of anonymous data"
+
+#: admin/class-admin-menu.php:72
+msgid "Analytics"
+msgstr "Analytics"
+
+#: admin/pages/settings.php:60
+msgid "Analytics profile"
+msgstr "Analytics profile"
+
+#: admin/pages/settings.php:101
+msgid "Anonymize IPs"
+msgstr "Anonymise IPs"
+
+#: admin/pages/settings.php:52
+msgid "Authenticate with your Google account"
+msgstr "Authenticate with your Google account"
+
+#: admin/pages/dashboard.php:52 admin/pages/dashboard.php:91
+msgid "Because we've switched to a newer version of the Google Analytics API, you'll need to re-authenticate with Google Analytics. We're sorry for the inconvenience. You can %sre-authenticate your Google Analytics profile here%s."
+msgstr "Because we've switched to a newer version of the Google Analytics API, you'll need to re-authenticate with Google Analytics. We're sorry for the inconvenience. You can %sre-authenticate your Google Analytics profile here%s."
+
+#: admin/dashboards/class-admin-dashboards.php:198
+msgid "Bounce Rate is the percentage of single-page sessions (i.e. sessions in which the person left your site from the entrance page without interacting with the page). <a href=\"http://yoa.st/gabounce\" target=\"_blank\">[Learn more]</a>"
+msgstr "Bounce Rate is the percentage of single-page sessions (i.e. sessions in which the person left your site from the entrance page without interacting with the page). <a href=\"http://yoa.st/gabounce\" target=\"_blank\">[Learn more]</a>"
+
+#: admin/dashboards/class-admin-dashboards.php:197
+msgid "Bounce rate"
+msgstr "Bounce rate"
+
+#: admin/pages/settings.php:100
+msgid "By allowing us to track anonymous data we can better help you, because we know with which WordPress configurations, themes and plugins we should test. No personal data will be submitted."
+msgstr "By allowing us to track anonymous data we can better help you, because we know with which WordPress configurations, themes and plugins we should test. No personal data will be submitted."
+
+#: admin/pages/settings.php:78
+msgid "Cannot connect to Google"
+msgstr "Cannot connect to Google"
+
+#: admin/pages/settings.php:99
+msgid "Clicks and downloads will be tracked as events, you can find these under Content &#xBB; Event Tracking in your Google Analytics reports."
+msgstr "Clicks and downloads will be tracked as events, you can find these under Content &#xBB; Event Tracking in your Google Analytics reports."
+
+#: admin/dashboards/class-admin-dashboards.php:222
+msgid "Countries"
+msgstr "Countries"
+
+#: admin/pages/settings.php:55
+msgid "Current UA-profile"
+msgstr "Current UA-profile"
+
+#: admin/pages/settings.php:20
+msgid "Custom Dimensions"
+msgstr "Custom Dimensions"
+
+#: admin/dashboards/class-admin-dashboards.php:153 admin/pages/dashboard.php:19
+msgid "Custom dimension reports"
+msgstr "Custom dimension reports"
+
+#: admin/class-admin-menu.php:236 admin/pages/dashboard.php:14
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: admin/class-google-analytics.php:349
+msgid "Data is not up-to-date, there was an error in retrieving the data from Google Analytics. This error could be caused by several issues. If the error persists, please see %sthis page%s."
+msgstr "Data is not up-to-date, there was an error in retrieving the data from Google Analytics. This error could be caused by several issues. If the error persists, please see %sthis page%s."
+
+#: admin/class-admin.php:511
+msgid "Debug information"
+msgstr "Debug information"
+
+#: admin/pages/settings.php:22
+msgid "Debug mode"
+msgstr "Debug mode"
+
+#: admin/class-admin.php:478
+msgid "Event"
+msgstr "Event"
+
+#: admin/dashboards/class-admin-dashboards.php:205
+msgid "Every referral to a web site has an origin, or (traffic) source. Possible sources include: “google” (the name of a search engine), “facebook.com” (the name of a referring site), “spring_newsletter” (the name of one of your newsletters), and “direct” (users that typed your URL directly into their browser, or who had bookmarked your site). <a href=\"http://yoa.st/gabnce\" target=\"_blank\">[Learn more]</a>"
+msgstr "Every referral to a web site has an origin, or (traffic) source. Possible sources include: “google” (the name of a search engine), “facebook.com” (the name of a referring site), “spring_newsletter” (the name of one of your newsletters), and “direct” (users that typed your URL directly into their browser, or who had bookmarked your site). <a href=\"http://yoa.st/gabnce\" target=\"_blank\">[Learn more]</a>"
+
+#: admin/class-admin-menu.php:249 admin/pages/extensions.php:14
+#: admin/pages/extensions.php:17
+msgid "Extensions"
+msgstr "Extensions"
+
+#: admin/class-admin.php:323
+msgid "FAQ"
+msgstr "FAQ"
+
+#: admin/dashboards/class-admin-dashboards.php:143
+msgid "First"
+msgstr "First"
+
+#: admin/class-admin.php:491
+msgid "Full links"
+msgstr "Full links"
+
+#: admin/pages/settings.php:17
+msgid "General"
+msgstr "General"
+
+#: admin/class-admin-menu.php:72 admin/pages/settings.php:32
+msgid "General settings"
+msgstr "General settings"
+
+#: admin/pages/extensions.php:36
+msgid "Get this extension"
+msgstr "Get this extension"
+
+#. #-#-#-#-#  tmp-google-analytics-for-wordpress.pot (Google Analytics by Yoast
+#. 5.4.6)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin/class-admin.php:566
+msgid "Google Analytics by Yoast"
+msgstr "Google Analytics by Yoast"
+
+#: admin/class-admin.php:560
+msgid "Google Analytics by Yoast Premium"
+msgstr "Google Analytics by Yoast Premium"
+
+#: admin/pages/dashboard.php:14 admin/pages/extensions.php:14
+#: admin/pages/settings.php:10
+msgid "Google Analytics by Yoast: "
+msgstr "Google Analytics by Yoast: "
+
+#: admin/pages/settings.php:51
+msgid "Google profile"
+msgstr "Google profile"
+
+#: admin/class-admin.php:338
+msgid "If you want to track custom dimensions like page views per author or post type, you should upgrade to the %1$spremium version of Google Analytics by Yoast%2$s."
+msgstr "If you want to track custom dimensions like page views per author or post type, you should upgrade to the %1$spremium version of Google Analytics by Yoast%2$s."
+
+#: admin/pages/extensions.php:41
+msgid "Installed"
+msgstr "Installed"
+
+#: admin/class-google-analytics.php:336
+msgid "It seems the authentication for the plugin has expired, please %sre-authenticate%s with Google Analytics to allow the plugin to fetch data."
+msgstr "It seems the authentication for the plugin has expired, please %sre-authenticate%s with Google Analytics to allow the plugin to fetch data."
+
+#: admin/class-admin.php:490
+msgid "Just the domain"
+msgstr "Just the domain"
+
+#: admin/dashboards/class-admin-dashboards.php:144
+msgid "Last"
+msgstr "Last"
+
+#: admin/dashboards/views/graph.php:15 admin/dashboards/views/table.php:15
+msgid "Last month"
+msgstr "Last month"
+
+#: admin/pages/extensions.php:18
+msgid "Licenses"
+msgstr "Licences"
+
+#: admin/dashboards/class-admin-dashboards.php:142
+msgid "Loading..."
+msgstr "Loading..."
+
+#: admin/pages/settings.php:89
+msgid "Manually enter your UA code"
+msgstr "Manually enter your UA code"
+
+#: admin/dashboards/class-admin-dashboards.php:145
+msgid "Next"
+msgstr "Next"
+
+#: admin/dashboards/class-admin-dashboards.php:137
+msgid "No data available"
+msgstr "No data available"
+
+#: admin/dashboards/class-admin-dashboards.php:149
+msgid "No matching records found"
+msgstr "No matching records found"
+
+#: admin/dashboards/class-admin-dashboards.php:139
+msgid "No rows to show"
+msgstr "No rows to show"
+
+#: admin/pages/dashboard.php:17
+msgid "Overview"
+msgstr "Overview"
+
+#: admin/dashboards/class-admin-dashboards.php:214
+msgid "Pages by url."
+msgstr "Pages by url."
+
+#: admin/class-admin.php:479
+msgid "Pageview"
+msgstr "Pageview"
+
+#: admin/pages/settings.php:46
+msgid "Paste your Google authentication code"
+msgstr "Paste your Google authentication code"
+
+#: admin/pages/settings.php:70
+msgid "Paste your Google code here"
+msgstr "Paste your Google code here"
+
+#: admin/class-google-analytics.php:323
+msgid "Please configure your %sGoogle Analytics settings%s!"
+msgstr "Please configure your %sGoogle Analytics settings%s!"
+
+#: admin/dashboards/class-admin-dashboards.php:213
+msgid "Popular pages"
+msgstr "Popular pages"
+
+#: admin/dashboards/class-admin-dashboards.php:146
+msgid "Previous"
+msgstr "Previous"
+
+#: admin/dashboards/class-admin-dashboards.php:147
+msgid "Processing..."
+msgstr "Processing..."
+
+#: admin/pages/settings.php:64
+msgid "Re-authenticate with your Google account"
+msgstr "Re-authenticate with your Google account"
+
+#: admin/dashboards/class-admin-dashboards.php:152 admin/pages/dashboard.php:18
+msgid "Reports"
+msgstr "Reports"
+
+#: admin/pages/settings.php:74
+msgid "Save authentication code"
+msgstr "Save authentication code"
+
+#: admin/class-admin-form.php:46 admin/pages/settings.php:176
+msgid "Save changes"
+msgstr "Save changes"
+
+#: admin/dashboards/class-admin-dashboards.php:148
+msgid "Search"
+msgstr "Search"
+
+#: admin/pages/dashboard.php:100
+msgid "Select a dimension"
+msgstr "Select a dimension"
+
+#: admin/pages/settings.php:60
+msgid "Select a profile"
+msgstr "Select a profile"
+
+#: admin/dashboards/class-admin-dashboards.php:191
+#: admin/dashboards/class-admin-dashboards.php:208
+#: admin/dashboards/class-admin-dashboards.php:217
+#: admin/dashboards/class-admin-dashboards.php:226
+msgid "Sessions"
+msgstr "Sessions"
+
+#: admin/class-admin-menu.php:242 admin/class-admin.php:326
+#: admin/pages/settings.php:10
+msgid "Settings"
+msgstr "Settings"
+
+#: admin/class-admin.php:134
+msgid "Settings saved."
+msgstr "Settings saved."
+
+#: admin/class-admin.php:185
+msgid "The UA code needs to follow UA-XXXXXXXX-X format."
+msgstr "The UA code needs to follow UA-XXXXXXXX-X format."
+
+#: admin/dashboards/class-admin-dashboards.php:223
+msgid "The country or territory from which visits originated. <a href=\"http://yoa.st/gacountry\" target=\"_blank\">[Learn more]</a>"
+msgstr "The country or territory from which visits originated. <a href=\"http://yoa.st/gacountry\" target=\"_blank\">[Learn more]</a>"
+
+#: admin/class-admin.php:561
+msgid "The premium version of Google Analytics by Yoast with more features and support."
+msgstr "The premium version of Google Analytics by Yoast with more features and support."
+
+#: admin/class-admin.php:141
+msgid "There were no changes to save, please try again."
+msgstr "There were no changes to save, please try again."
+
+#: admin/pages/settings.php:101
+msgid "This adds %1$s, telling Google Analytics to anonymize the information sent by the tracker objects by removing the last octet of the IP address prior to its storage."
+msgstr "This adds %1$s, telling Google Analytics to anonymize the information sent by the tracker objects by removing the last octet of the IP address prior to its storage."
+
+#: admin/class-admin.php:340
+msgid "This will also give you email access to the support team at Yoast, who will provide support on the plugin 24/7."
+msgstr "This will also give you email access to the support team at Yoast, who will provide support on the plugin 24/7."
+
+#: admin/pages/settings.php:99
+msgid "Track outbound click and downloads"
+msgstr "Track outbound click and downloads"
+
+#: admin/class-admin.php:567
+msgid "Track your eCommerce data and transactions with this eCommerce extension for Google Analytics."
+msgstr "Track your eCommerce data and transactions with this eCommerce extension for Google Analytics."
+
+#: admin/dashboards/class-admin-dashboards.php:204
+msgid "Traffic sources"
+msgstr "Traffic sources"
+
+#: admin/pages/settings.php:18
+msgid "Universal"
+msgstr "Universal"
+
+#: admin/pages/settings.php:85
+msgid "Until this is fixed, you can only use the manual authentication method and cannot use the dashboards feature."
+msgstr "Until this is fixed, you can only use the manual authentication method and cannot use the dashboards feature."
+
+#: admin/pages/settings.php:93
+msgid "Warning: If you use a manual UA code, you won't be able to use the dashboards."
+msgstr "Warning: If you use a manual UA code, you won't be able to use the dashboards."
+
+#: admin/pages/dashboard.php:43 admin/pages/dashboard.php:82
+msgid "We need you to authenticate with Google Analytics to use this functionality. If you set your UA-code manually, this won't work. You can %sauthenticate your Google Analytics profile here%s to enable dashboards."
+msgstr "We need you to authenticate with Google Analytics to use this functionality. If you set your UA-code manually, this won't work. You can %sauthenticate your Google Analytics profile here%s to enable dashboards."
+
+#: admin/class-admin-menu.php:72 admin/class-admin-menu.php:135
+msgid "Yoast Google Analytics:"
+msgstr "Yoast Google Analytics:"
+
+#: admin/class-admin.php:91
+msgid "Yoast plugins share some code between them to make your site faster. As a result of that, we need all Yoast plugins to be up to date. We've detected this isn't the case, so please update the Yoast plugins that aren't up to date yet."
+msgstr "Yoast plugins share some code between them to make your site faster. As a result of that, we need all Yoast plugins to be up to date. We've detected this isn't the case, so please update the Yoast plugins that aren't up to date yet."
+
+#: admin/pages/extensions.php:51
+msgid "You have not installed any extensions for Google Analytics by Yoast, so there are no licenses to activate."
+msgstr "You have not installed any extensions for Google Analytics by Yoast, so there are no licences to activate."
+
+#: admin/pages/dashboard.php:65 admin/pages/dashboard.php:111
+msgid "You have not yet finished setting up Google Analytics for Wordpress by Yoast. Please %sadd your Analytics profile here%s to enable tracking."
+msgstr "You have not yet finished setting up Google Analytics for Wordpress by Yoast. Please %sadd your Analytics profile here%s to enable tracking."
+
+#: admin/pages/settings.php:83
+msgid "Your firewall or webhost is blocking requests to Google, please ask your webhost company to fix this."
+msgstr "Your firewall or webhost is blocking requests to Google, please ask your webhost company to fix this."
+
+#: admin/pages/settings.php:80
+msgid "Your server is blocking requests to Google, to fix this, add <code>*.googleapis.com</code> to the <code>WP_ACCESSIBLE_HOSTS</code> constant in your <em>wp-config.php</em> or ask your webhost to do this."
+msgstr "Your server is blocking requests to Google, to fix this, add <code>*.googleapis.com</code> to the <code>WP_ACCESSIBLE_HOSTS</code> constant in your <em>wp-config.php</em> or ask your webhost to do this."
+
+#: admin/dashboards/class-admin-dashboards.php:141
+msgctxt "_MAX_ will be replaced by JS"
+msgid "Show _MENU_ rows"
+msgstr "Show _MENU_ rows"
+
+#: admin/dashboards/class-admin-dashboards.php:140
+msgctxt "_MAX_ will be replaced by JS (See: http://datatables.net/reference/option/language.infoFiltered)"
+msgid "(filtered from _MAX_ total rows)"
+msgstr "(filtered from _MAX_ total rows)"
+
+#: admin/dashboards/class-admin-dashboards.php:138
+msgctxt "_START_, _END_ and _TOTAL_ will be replaced by JS (See: http://datatables.net/reference/option/language.info)"
+msgid "Showing _START_ to _END_ of _TOTAL_ rows"
+msgstr "Showing _START_ to _END_ of _TOTAL_ rows"
+
+#: admin/class-admin.php:566
+msgid "eCommerce tracking"
+msgstr "eCommerce tracking"

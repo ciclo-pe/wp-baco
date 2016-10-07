@@ -76,9 +76,66 @@ class WP_Plugin_BacoTest extends TestCase {
     $this->assertStringStartsWith( 'DROP TABLE IF EXISTS `wp_commentmeta`;', $this->_baco->dump() );
   }
 
-  //public function test_snapshot() {
-    //var_dump( $this->_baco );
-  //}
+  public function test_snapshot_should_exclude_baco_plugin_files_by_default() {
+    $archive = $this->_baco->snapshot();
+
+    $this->assertStringEndsWith( '.tar.gz', $archive );
+    $this->assertFileExists( $archive );
+
+    // Extract archive so we can examine it.
+    $tmpdir = WP_Plugin_Baco_Fs::tmpdir();
+    $tar = new PharData( $archive );
+    $tar->extractTo( $tmpdir );
+
+    // Assert that baco plugin files have actually been excluded
+    $this->assertFalse( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'wp-baco' ) );
+
+    // Assert that everything else has been included
+    $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'advanced-cache.php' );
+    $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'dump.sql' );
+    $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'index.php' );
+    $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'wp-cache-config.php' );
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'cache' ) );
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'languages' ) );
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'plugins' ) );
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'themes' ) );
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'uploads' ) );
+
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . 'twentysixteen' ) );
+    $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . 'twentysixteen' . DIRECTORY_SEPARATOR . 'style.css' );
+  }
+
+  public function test_snapshot_should_handle_excludes() {
+    $archive = $this->_baco->snapshot( array(
+      'exclude' => array( 'cache', 'plugins/google-analytics-for-wordpress' )
+    ) );
+
+    $this->assertStringEndsWith( '.tar.gz', $archive );
+    $this->assertFileExists( $archive );
+
+    // Extract archive so we can examine it.
+    $tmpdir = WP_Plugin_Baco_Fs::tmpdir();
+    $tar = new PharData( $archive );
+    $tar->extractTo( $tmpdir );
+
+    // Assert that excluded files have actually been excluded
+    $this->assertFalse( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'wp-baco' ) );
+    $this->assertFalse( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'cache' ) );
+    $this->assertFalse( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'google-analytics-for-wordpress' ) );
+
+    // Assert that everything else has been included
+    $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'advanced-cache.php' );
+    $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'dump.sql' );
+    $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'index.php' );
+    $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'wp-cache-config.php' );
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'languages' ) );
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'plugins' ) );
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'themes' ) );
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'uploads' ) );
+
+    $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . 'twentysixteen' ) );
+    $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . 'twentysixteen' . DIRECTORY_SEPARATOR . 'style.css' );
+  }
 
   //public function test_restore_files() {
     //var_dump( $this->_baco );

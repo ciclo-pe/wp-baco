@@ -84,73 +84,47 @@ jQuery(function ($) {
       $form.find('button').removeAttr('disabled');
     };
 
-    if (action === 'create_download' || action === 'download') {
+    if (action === 'create') {
       resetUI();
       return $form.submit();
     }
-    else if (action === 'restore_upload') {
-      var $input = $('<input type="file" name="archive" style="display:none;">');
-      $input.on('change', function (e) {
 
-        // check file is tar.gz file!
-        //console.log('path', $input.val());
-        $btn.text('Uploading...');
-        var $progress = $('<span>');
-        $btn.append($progress);
+    var $input = $('<input type="file" name="archive" style="display:none;">');
 
-        $form.find('button').attr('disabled', true);
+    $input.on('change', function (e) {
 
-        post(function (percentComplete) {
+      // check file is tar.gz file!
+      //console.log('path', $input.val());
+      $btn.text('Uploading...');
+      var $progress = $('<span>');
+      $btn.append($progress);
 
-          if (percentComplete >= 1) {
-            $btn.html('Restoring...');
-          }
-          else {
-            $progress.text(' (' + (percentComplete * 100).toFixed(0) + '%)');
-          }
-        }, function (err) {
+      $form.find('button').attr('disabled', true);
 
-          $progress.remove();
+      post(function (percentComplete) {
 
-          if (err) {
-            return resetUI(err);
-          }
-          resetUI(null, 'Backup restored successfully');
-          window.location.reload();
-        });
+        if (percentComplete >= 1) {
+          $btn.html('Restoring...');
+        }
+        else {
+          $progress.text(' (' + (percentComplete * 100).toFixed(0) + '%)');
+        }
+      }, function (err) {
+
+        $progress.remove();
+
+        if (err) {
+          return resetUI(err);
+        }
+        resetUI(null, 'Backup restored successfully');
+        window.location.reload();
       });
-      $form.attr('enctype', 'multipart/form-data').append($input);
-      $input.click();
-      return false;
-    }
-
-    if (/^create/i.test(action)) {
-      $btn.text('Creating...');
-    }
-    else if (/^restore/i.test(action)) {
-      $btn.text('Restoring...');
-    }
-    else if (/^delete/i.test(action)) {
-      $btn.text('Deleting...');
-    }
-    $form.find('button').attr('disabled', true);
-
-    post(function (err, resp) {
-
-      if (err) {
-        return resetUI(err);
-      }
-
-      if (action === 'delete' || action === 'create_remote') {
-        return window.location.reload();
-      }
-      else if (action === 'restore') {
-        resetUI(null, 'Backup restored successfully!');
-        return window.location.reload();
-      }
-
-      resetUI();
     });
+
+    $form.attr('enctype', 'multipart/form-data').append($input);
+    $input.click();
+
+    return false;
   });
 
 });
