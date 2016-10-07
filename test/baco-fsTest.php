@@ -1,7 +1,9 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
+
 require 'src/includes/baco-fs.php';
+
 
 class WP_Plugin_Baco_FsTest extends TestCase {
 
@@ -22,6 +24,7 @@ class WP_Plugin_Baco_FsTest extends TestCase {
     $this->assertTrue( rmdir( $tmpdir ) );
   }
 
+  /*
   public function test_cp() {
     $src = WP_Plugin_Baco_Fs::tmpdir();
     $dest = WP_Plugin_Baco_Fs::tmpdir();
@@ -31,9 +34,10 @@ class WP_Plugin_Baco_FsTest extends TestCase {
     $this->assertTrue( rmdir( $src ) );
     $this->assertTrue( rmdir( $dest ) );
   }
+  */
 
-  public function test_rimraf() {
-    //...
-  }
+  //public function test_rimraf() {
+  //  //...
+  //}
 
 }

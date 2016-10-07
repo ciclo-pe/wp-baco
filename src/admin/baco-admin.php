@@ -115,7 +115,7 @@ class WP_Plugin_Baco_Admin {
       return;
     }
 
-    if ( ! $this->_plugin->restore( $path ) ) {
+    if ( ! $this->_plugin->restore( $path, get_option( 'siteurl' ) ) ) {
       echo json_encode( array(
         'ok' => false,
         'archive' => $archive,

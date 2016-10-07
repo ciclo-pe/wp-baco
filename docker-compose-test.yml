@@ -1,9 +1,9 @@
 phpunit:
-  image: phpunit/phpunit
+  image: wp-phpunit
   links:
     - db
   volumes:
-    - .:/app
+    - .:/var/www/html
 
 db:
   image: mariadb

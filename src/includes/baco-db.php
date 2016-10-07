@@ -18,26 +18,38 @@ class WP_Plugin_Baco_Db {
     $this->_port = $port;
   }
 
+  /**
+   * Connect to MySQL database.
+   *
+   * @throws Exception if can not connect.
+   * @return resource Link representing MySQL connection.
+   */
   private function _connect() {
-    return mysqli_connect(
+    $link = @mysqli_connect(
       $this->_host,
       $this->_user,
       $this->_pass,
       $this->_name,
       $this->_port
     );
+
+    if ( ! $link ) {
+      throw new Exception( mysqli_connect_error() );
+    }
+
+    return $link;
   }
 
-  //
-  // Dump MySQL tables.
-  //
+  /**
+   * Dump MySQL tables.
+   *
+   * @param $tables string|array List of tables to include in the dump.
+   *
+   * @throws Exception if can not connect.
+   * @return string The actual SQL dump.
+   */
   public function dump( $tables = '*' ) {
     $link = $this->_connect();
-
-    if ( !$link ) {
-      echo mysqli_connect_error();
-      exit( 1 );
-    }
 
     if ( $tables == '*' ) {
       $tables = array();
@@ -85,32 +97,35 @@ class WP_Plugin_Baco_Db {
     return $return;
   }
 
-  //
-  // Restore SQL dump.
-  //
-  // $dumpfile: Path to file containing the SQL dump.
-  // $siteurl: WordPress site URL.
-  //
+  /**
+   * Restore SQL dump.
+   *
+   * @param $dumpfile Path to file containing the SQL dump.
+   * @param $siteurl WordPress site URL.
+   *
+   * @throws Exception if can not connect.
+   * @return void
+   */
   public function restore( $dumpfile, $siteurl ) {
-    $sql = file_get_contents( $dumpfile );
     $link = $this->_connect();
 
-    if ( ! $link ) {
-      echo mysqli_connect_error();
-      mysqli_close( $link );
-      return false;
-    }
+    // TODO: Throw if dumpfile doesn't exist or not readable!
+
+    $sql = file_get_contents( $dumpfile );
 
     if ( ! mysqli_multi_query( $link, $sql ) ) {
-      echo 'Error importing SQL dump';
       mysqli_close( $link );
-      return false;
+      throw new Exception( 'Error importing SQL dump. ' . mysqli_error( $link ) );
     }
 
-    if ( $mysql_error = mysqli_error( $link ) ) {
-      echo $mysql_error;
-      return false;
-    }
+    // TODO: if statement above only checks for mysql error un first statement.
+    // Have to check for errors after iterating results?
+    // See: http://php.net/manual/en/mysqli.multi-query.php#106126
+
+    //if ( $mysql_error = mysqli_error( $link ) ) {
+    //  echo $mysql_error;
+    //  return false;
+    //}
 
     // go through results and free them up, otherwise we can not execute new
     // queries...
