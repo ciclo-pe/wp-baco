@@ -1,5 +1,3 @@
 # baco
 
-```sh
-docker-compose -f docker-compose-test.yml run phpunit -c phpunit.xml --testdox
-```
+[![Build Status](https://travis-ci.org/ciclo-pe/wp-baco.svg?branch=master)](https://travis-ci.org/ciclo-pe/wp-baco)
