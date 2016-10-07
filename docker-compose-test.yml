@@ -1,5 +1,5 @@
 phpunit:
-  image: wp-phpunit
+  image: ciclope/wp-phpunit
   links:
     - db
   volumes:
