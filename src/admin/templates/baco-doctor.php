@@ -6,9 +6,35 @@ function bytes_to_human( $bytes ) {
 }
 ?>
 
-<pre>
+<!--pre>
 <?php var_dump( $doctor['notifications'] ); ?>
-</pre>
+</pre-->
+
+<?php if ( sizeof( $doctor['notifications'] ) > 0 ) : ?>
+  <h2>Notifications</h2>
+  <?php foreach ( $doctor['notifications'] as $notification ) : ?>
+    <div class="notification notice <?php echo $notification['type']; ?>">
+      <p class="dashicons-before dashicons-warning">
+        <?php echo $notification['message']; ?>
+      </p>
+      <p><?php echo sizeof( $notification['files'] ); ?> offending files</p>
+      <ul>
+      <?php
+      $max = sizeof( $notification['files'] );
+      if ( $max > 10 ) {
+        $max = 10;
+      }
+      for ( $i = 0; $i < $max; $i++ ) {
+        echo '<li>' . $notification['files'][$i] . '</li>';
+      }
+      if ( $max != sizeof( $notification['files'] ) ) {
+        echo '<li>...</li>';
+      }
+      ?>
+      </ul>
+    </div>
+  <?php endforeach; ?>
+<?php endif; ?>
 
 <h2>PHP [<?php echo $doctor['php']['version']; ?>]</h2>
 

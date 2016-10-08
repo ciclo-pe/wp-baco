@@ -14,3 +14,7 @@
 .wp-list-table td {
   vertical-align: middle;
 }
+
+.warning {
+  border-left-color: orange;
+}

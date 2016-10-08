@@ -3,7 +3,7 @@
 * Plugin Name: Baco
 * Plugin URI:  https://github.com/ciclo-pe/wp-baco
 * Description: A simple backup plugin.
-* Version:     0.0.0
+* Version:     0.0.1
 * Author:      Estudio Cíclope
 * Author URI:  http://ciclo.pe
 * License:     GPL2
