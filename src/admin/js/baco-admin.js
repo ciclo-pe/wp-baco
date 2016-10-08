@@ -4,6 +4,45 @@ jQuery(function ($) {
 
   var $form = $('#baco-snapshots-form');
 
+  var phpSizeToBytes = function (str) {
+
+    var matches = /^(\d+)(.)$/.exec(str);
+
+    if (!matches || matches.length < 3) {
+      return parseInt(str, 10);
+    }
+
+    if (matches[2] === 'M') {
+      return parseInt(matches[1], 10) * 1024 * 1024;
+    }
+    else if (matches[2] === 'K') {
+      return parseInt(matches[1], 10) * 1024;
+    }
+    else {
+      return parseInt(matches[1], 10);
+    }
+  };
+
+  var checkUploadFile = function (file) {
+
+    var nameParts = file.name.split('.');
+
+    if (file.type !== 'application/x-gzip' || nameParts.length < 3 || nameParts.pop() !== 'gz' || nameParts.pop() !== 'tar') {
+      alert('File must be a gzip compressed tar archive');
+      return false;
+    }
+
+    var sizeLimits = ['upload_max_filesize', 'post_max_size', 'memory_limit'];
+    for (var i = 0; i < sizeLimits.length; i++) {
+      if (file.size > phpSizeToBytes(WP_Baco.doctor.php.config[sizeLimits[i]])) {
+        alert('File exceeds PHP\'s ' + sizeLimits[i]);
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   var post = function (progress, cb) {
 
     if (arguments.length === 1) {
@@ -94,7 +133,10 @@ jQuery(function ($) {
     $input.on('change', function (e) {
 
       // check file is tar.gz file!
-      //console.log('path', $input.val());
+      if (!checkUploadFile(this.files[0])) {
+        return false;
+      }
+
       $btn.text('Uploading...');
       var $progress = $('<span>');
       $btn.append($progress);

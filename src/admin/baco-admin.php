@@ -2,11 +2,11 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 
-class WP_Plugin_Baco_Admin {
+class WP_Baco_Admin {
 
   private $_plugin = null;
 
-  public function __construct( WP_Plugin_Baco $wp_plugin_baco ) {
+  public function __construct( WP_Baco $wp_plugin_baco ) {
     $this->_plugin = $wp_plugin_baco;
 
     add_action( 'admin_menu', array( $this, 'add_menu' ) );
@@ -71,8 +71,19 @@ class WP_Plugin_Baco_Admin {
       wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
     }
 
+    $options = array();
+
+    $exclude = trim( get_option( 'baco_exclude', '' ) );
+
+    if ( $exclude ) {
+      $options['exclude'] = explode( "\n", $exclude );
+    }
+
+    $doctor = $this->_plugin->doctor( $options );
+
     $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'snapshots';
     ?>
+    <script>window.WP_Baco = { doctor: <?php echo json_encode( $doctor ); ?> }</script>
     <div class="wrap">
       <h1>Baco</h1>
       <?php settings_errors(); ?>
@@ -138,7 +149,7 @@ class WP_Plugin_Baco_Admin {
       return;
     }
 
-    $tmpdir = WP_Plugin_Baco_Fs::tmpdir();
+    $tmpdir = WP_Baco_Fs::tmpdir();
     $path = $tmpdir . DIRECTORY_SEPARATOR . $archive['name'];
 
     if ( ! rename( $archive['tmp_name'], $path ) ) {

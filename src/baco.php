@@ -18,13 +18,13 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 require 'includes/baco.php';
 
 
-register_activation_hook( __FILE__, array( 'WP_Plugin_Baco', 'activate' ));
-register_deactivation_hook( __FILE__, array( 'WP_Plugin_Baco', 'deactivate' ));
+register_activation_hook( __FILE__, array( 'WP_Baco', 'activate' ));
+register_deactivation_hook( __FILE__, array( 'WP_Baco', 'deactivate' ));
 
 
-$wp_plugin_baco = new WP_Plugin_Baco( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
+$wp_plugin_baco = new WP_Baco( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
 
 if ( is_admin() ) {
   require 'admin/baco-admin.php';
-  $wp_plugin_baco_admin = new WP_Plugin_Baco_Admin( $wp_plugin_baco );
+  $wp_plugin_baco_admin = new WP_Baco_Admin( $wp_plugin_baco );
 }

@@ -5,3 +5,12 @@
 .form-table textarea {
   width: 100%;
 }
+
+.postbox .inside {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.wp-list-table td {
+  vertical-align: middle;
+}

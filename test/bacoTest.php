@@ -8,7 +8,7 @@ define( 'ABSPATH',  __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR
 require 'src/includes/baco.php';
 
 
-class WP_Plugin_BacoTest extends TestCase {
+class WP_BacoTest extends TestCase {
 
   private function _dbLink() {
     return mysqli_connect(
@@ -20,7 +20,7 @@ class WP_Plugin_BacoTest extends TestCase {
   }
 
   public function setUp() {
-    $this->_baco = new WP_Plugin_Baco(
+    $this->_baco = new WP_Baco(
       $_SERVER['DB_PORT_3306_TCP_ADDR'],
       'root',
       $_SERVER['DB_ENV_MYSQL_ROOT_PASSWORD'],
@@ -41,19 +41,24 @@ class WP_Plugin_BacoTest extends TestCase {
     }
 
     mysqli_close( $link );
+
+    $this->super_long_fname = ABSPATH . DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'a-super-long-file-name-that-should-exceed-one-hundred-chars-so-that-we-can-test-tar-errors-related-to-long-file-names';
+    if ( is_file( $this->super_long_fname ) ) {
+      unlink( $this->super_long_fname );
+    }
   }
 
   public function test_restore_db_should_throw_when_bad_conn() {
     $dumpfile = ABSPATH . 'dump.sql';
     $siteurl = 'http://foo.com';
-    $plugin = new WP_Plugin_Baco(
+    $plugin = new WP_Baco(
       $_SERVER['DB_PORT_3306_TCP_ADDR'],
       'rootsy____###',
       $_SERVER['DB_ENV_MYSQL_ROOT_PASSWORD'],
       'baco_test'
     );
 
-    $this->expectException(Exception::class);
+    $this->expectException( Exception::class );
     $plugin->restore_db( $dumpfile, $siteurl );
   }
 
@@ -83,7 +88,7 @@ class WP_Plugin_BacoTest extends TestCase {
     $this->assertFileExists( $archive );
 
     // Extract archive so we can examine it.
-    $tmpdir = WP_Plugin_Baco_Fs::tmpdir();
+    $tmpdir = WP_Baco_Fs::tmpdir();
     $tar = new PharData( $archive );
     $tar->extractTo( $tmpdir );
 
@@ -114,7 +119,7 @@ class WP_Plugin_BacoTest extends TestCase {
     $this->assertFileExists( $archive );
 
     // Extract archive so we can examine it.
-    $tmpdir = WP_Plugin_Baco_Fs::tmpdir();
+    $tmpdir = WP_Baco_Fs::tmpdir();
     $tar = new PharData( $archive );
     $tar->extractTo( $tmpdir );
 
@@ -135,6 +140,18 @@ class WP_Plugin_BacoTest extends TestCase {
 
     $this->assertTrue( is_dir( $tmpdir . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . 'twentysixteen' ) );
     $this->assertFileExists( $tmpdir . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . 'twentysixteen' . DIRECTORY_SEPARATOR . 'style.css' );
+  }
+
+  public function test_snapshot_should_throw_when_filename_too_long() {
+    touch( $this->super_long_fname );
+    $this->expectException( PharException::class );
+    $this->expectExceptionMessageRegExp( '/too long for tar file format/' );
+    $archive = $this->_baco->snapshot();
+  }
+
+  public function test_doctor() {
+    touch( $this->super_long_fname );
+    var_dump( $this->_baco->doctor() );
   }
 
   //public function test_restore_files() {

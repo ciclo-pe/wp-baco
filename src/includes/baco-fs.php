@@ -1,7 +1,7 @@
 <?php
-if ( ! class_exists( 'WP_Plugin_Baco_Fs' ) ) {
+if ( ! class_exists( 'WP_Baco_Fs' ) ) {
 
-  class WP_Plugin_Baco_Fs {
+  class WP_Baco_Fs {
 
     //
     // Create unique temporary dir
@@ -60,7 +60,7 @@ if ( ! class_exists( 'WP_Plugin_Baco_Fs' ) ) {
         }
         $files = array_diff( scandir( $src ), array( '.', '..' ) );
         foreach ( $files as $file ) {
-          if ( ! WP_Plugin_Baco_Fs::cp( $src . $ds . $file, $dest . $ds . $file, $exclude, $base ) ) {
+          if ( ! WP_Baco_Fs::cp( $src . $ds . $file, $dest . $ds . $file, $exclude, $base ) ) {
             return false;
           }
         }
@@ -99,7 +99,7 @@ if ( ! class_exists( 'WP_Plugin_Baco_Fs' ) ) {
         $files = array_diff( scandir( $path ), array( '.', '..' ) );
         $has_excluded = false;
         foreach ( $files as $file ) {
-          $res = WP_Plugin_Baco_Fs::rimraf( $path . $ds . $file, $exclude, $base );
+          $res = WP_Baco_Fs::rimraf( $path . $ds . $file, $exclude, $base );
           if ( ! $res ) {
             return false;
           }

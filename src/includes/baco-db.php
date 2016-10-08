@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 
-class WP_Plugin_Baco_Db {
+class WP_Baco_Db {
 
   private $_host;
   private $_user;
@@ -38,6 +38,31 @@ class WP_Plugin_Baco_Db {
     }
 
     return $link;
+  }
+
+  public function version() {
+    $link = $this->_connect();
+    $version = mysqli_get_server_info( $link );
+    mysqli_close( $link );
+    return $version;
+  }
+
+  public function stats() {
+    $link = $this->_connect();
+    $q = mysqli_query( $link, 'SHOW TABLE STATUS' );
+    $stats = array(
+      'total_size' => 0,
+      'tables' => array()
+    );
+
+    while( $row = mysqli_fetch_assoc( $q ) ) {
+      $stats['total_size'] += $row['Data_length'] + $row['Index_length'];
+      $stats['tables'][] = $row;
+    }
+
+    mysqli_close( $link );
+
+    return $stats;
   }
 
   /**

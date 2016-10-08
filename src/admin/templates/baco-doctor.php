@@ -1,26 +1,77 @@
 <?php
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
+function bytes_to_human( $bytes ) {
+  return number_format( $bytes / 1024 / 1024, 2 ) . 'Mb';
+}
 ?>
+
+<pre>
+<?php var_dump( $doctor['notifications'] ); ?>
+</pre>
+
+<h2>PHP [<?php echo $doctor['php']['version']; ?>]</h2>
+
+<table class="wp-list-table widefat fixed striped">
+  <?php foreach ( $doctor['php']['config'] as $k => $v ) : ?>
+  <tr>
+    <th><?php echo $k; ?></th>
+    <td><?php echo $v; ?></td>
+  </tr>
+  <?php endforeach; ?>
+</table>
+
+<h2>Files [wp-content]</h2>
+
+<div class="postbox">
+  <div class="inside">
+    <ul>
+      <li>
+        <?php echo $doctor['files']['count']; ?> files
+      </li>
+      <li>
+        <?php echo bytes_to_human( $doctor['files']['total_size'] ); ?>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<h2>MySQL [<?php echo $doctor['mysql']['version']; ?>]</h2>
+
+<div class="postbox">
+  <div class="inside">
+    <ul>
+      <li>
+        <?php echo sizeof( $doctor['mysql']['stats']['tables'] ); ?> tables
+      </li>
+      <li>
+        <?php echo bytes_to_human( $doctor['mysql']['stats']['total_size'] ); ?>
+      </li>
+    </ul>
+  </div>
+</div>
 
 <table class="wp-list-table widefat fixed striped">
   <tr>
-    <th>upload_max_filesize</th>
-    <td><?php echo ini_get('upload_max_filesize'); ?></td>
+    <th>Name</th>
+    <th>Rows</th>
+    <th>Data</th>
+    <th>Index</th>
+    <th>Total</th>
   </tr>
+  <?php foreach ( $doctor['mysql']['stats']['tables'] as $table ) : ?>
   <tr>
-    <th>post_max_size</th>
-    <td><?php echo ini_get('post_max_size'); ?></td>
+    <th>
+      <?php echo $table['Name']; ?><br />
+      <span style="font-size:0.7em;">
+        <?php echo $table['Engine']; ?> /
+        <?php echo $table['Collation']; ?>
+      </span>
+    </th>
+    <td><?php echo $table['Rows']; ?></td>
+    <td><?php echo bytes_to_human( $table['Data_length'] ); ?></td>
+    <td><?php echo bytes_to_human( $table['Index_length'] ); ?></td>
+    <td><?php echo bytes_to_human( $table['Data_length'] + $table['Index_length'] ); ?></td>
   </tr>
-  <tr>
-    <th>memory_limit</th>
-    <td><?php echo ini_get('memory_limit'); ?></td>
-  </tr>
-  <tr>
-    <th>max_execution_time</th>
-    <td><?php echo ini_get('max_execution_time'); ?></td>
-  </tr>
-  <tr>
-    <th>max_input_time</th>
-    <td><?php echo ini_get('max_input_time'); ?></td>
-  </tr>
+  <?php endforeach; ?>
 </table>
